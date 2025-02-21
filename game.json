@@ -3,7 +3,7 @@
   "description": "Ana Jansen deseja despertar a Serpente de São Luís e dominar o mundo. Você precisa impedir isso antes que seja tarde!",
   "author": "Marcos Mineiro",
   "startLocationId": "1",
-  "max_itens": 5,
+  "max_items": 5,
   "max_turns_easy": 50,
   "max_turns_normal": 30,
   "max_turns_hard": 20,
@@ -17,64 +17,45 @@
       "description": "Você está no Centro de Alcântara, cercado por ruínas antigas e um clima de mistério. Dizem que aqui há pistas sobre os planos de Ana Jansen.",
       "exits": [
         {
-          "direction": " norte",
-          "targetLocationId": " 2",
-          "description": "Uma estrada de pedras leva a um antigo casarão abandonado.",
-          "inactive": true
-        }
-      ],
-      "items": 
-      [ 
-        {
-          "id": "1",
-          "name": "Chave",
-          "description": "Chave para abrir a porta do casarão.",
-          "can_take": false,
+          "direction": "norte",
+          "targetLocationId": "2",
+          "description": "Uma estrada de pedras leva a um antigo casarão abandonado...",
           "inactive": false
-      
         }
       ],
-      "npcs": 
-      [
+      "items": [
+        {
+          "id": "chave",
+          "name": "chave",
+          "description": "Chave para abrir a porta do casarão.",
+          "can_take": true,
+          "inactive": false
+        }
+      ],
+      "npcs": [
         {
           "id": "1",
           "name": "Sr. João",
           "description": "Um velho senhor, guardião do casarão.",
           "inactive": true,
           "dialogues": [
-
             {
-              "text": " Sr. João: Ola, sou o Sr. João, guardião do casarão, Você foi escolhido para nos libertar das garras maliquinas.",
-              "responses": [ 
+              "text": "Sr. João: Olá, sou o Sr. João, guardião do casarão. Você foi escolhido para nos libertar das garras maliquinas de Ana Jansen, pegue a chave, entre no casarão e conheça o seu destino.",
+              "responses": [
                 {
-                  "text": "",
+                  "text": "Ok, vou pegar a chave.",
                   "result": {
-                    "active": [],
-                    "lose_items": []
+                    "active": ["chave"],
+                    "lose_items": ["1"]
                   }
-              }]
+                }
+              ]
             }
           ]
         }
       ],
-      "puzzes": [
-        {
-          "id": "",
-          "description": "",
-          "solution": {
-            "required_items": [],
-            "actions": ""
-          },
-          "result":{
-            "active": [],
-            "lose_items": [],
-            "lose_life": 12
-          }
-        }
-      ],
-
-      "enemies": 
-      [
+      "puzzles": [],
+      "enemies": [
         {
           "attack": 12,
           "defense": 10,
@@ -85,8 +66,45 @@
           }
         }
       ]
-      
+    },
+    {
+      "id": "2",
+      "name": "Casarão",
+      "description": "Dentro do casarão, você se depara com um quadro em branco, resolva o mistério para obter respostas.",
+      "exits": [
+        {
+          "direction": "sul",
+          "targetLocationId": "1",
+          "description": "Uma estrada de pedras leva a um antigo casarão abandonado...",
+          "inactive": false
+        }
+      ],
+      "items": [
+        {
+          "id": "bussola",
+          "name": "Bússola",
+          "description": "Uma bússola mágica que revela o próximo local a ser visitado."
+        }
+      ],
+      "puzzles": [
+        {
+          "id": "charada_parede",
+          "description": "Aparece uma parede com uma charada, resolva para obter respostas.",
+          "solution": {
+            "required_items": [],
+            "actions": "resolver"
+          },
+          "result": {
+            "active": [],
+            "lose_items": [],
+            "lose_life": 12
+          },
+          "charade": {
+            "question": "No alto da serra ou no fundo da rua, meu corpo é de fogo e minha cabeça de serpente. Quem sou eu?",
+            "answer": "Serpente"
+          }
+        }
+      ]
     }
-
   ]
 }
