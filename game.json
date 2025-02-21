@@ -1,144 +1,92 @@
 {
-    "title": "A Lenda de São Luís",
-    "description": "Impeça Ana Jansen de despertar a serpente e dominar a ilha!",
-    "author": "Marcos Mineiro",
-    "startLocationId": "1",
-    "max_turns_easy": 50,
-    "max_turns_normal": 30,
-    "max_turns_hard": 15,
-    "attack": 10,
-    "defense": 8,
-    "life": 3,
-    "locations": [
-      {
-        "id": "1",
-        "name": "Alcantara",
-        "description": "Você está em Alcântara. Um local histórico cheio de mistérios.",
-        "exits": [
-          {
-            "direction": "norte",
-            "targetLocationId": "2",
-            "description": "Igreja de Alcântara",
-            "inactive": false
-          },
-          {
-            "direction": "sul",
-            "targetLocationId": "3",
-            "description": "Taberna de Zezinho Pé de Cana",
-            "inactive": false
-          },
-          {
-            "direction": "leste",
-            "targetLocationId": "4",
-            "description": "Igreja Velha com Padre Loreno",
-            "inactive": false
-          }
-        ],
-        "items": [],
-        "npcs": [],
-        "puzzles": [],
-        "enemies": []
-      },
-      {
-        "id": "2",
-        "name": "Igreja de Alcântara",
-        "description": "Você encontra Sr. João, que conhece a história de Ana Jansen.",
-        "exits": [
-          {
-            "direction": "sul",
-            "targetLocationId": "1",
-            "description": "Voltar para Alcântara",
-            "inactive": false
-          }
-        ],
-        "items": [],
-        "npcs": [
-          {
-            "id": "1",
-            "name": "Sr. João",
-            "description": "Um senhor que sabe tudo sobre as lendas locais.",
-            "inactive": false,
-            "dialogues": [
-              {
-                "text": "Ana Jansen quer despertar a serpente para dominar São Luís!",
-                "responses": []
-              }
-            ]
-          }
-        ],
-        "puzzles": [],
-        "enemies": []
-      },
-      {
-        "id": "3",
-        "name": "Taberna de Zezinho Pé de Cana",
-        "description": "Zezinho desafia você com uma charada para obter a Espada de São Jorge.",
-        "exits": [
-          {
-            "direction": "norte",
-            "targetLocationId": "1",
-            "description": "Voltar para Alcântara",
-            "inactive": false
-          }
-        ],
-        "items": [
-          {
-            "id": "1",
-            "name": "Espada de São Jorge",
-            "description": "Uma espada poderosa contra o mal.",
-            "can_take": true,
-            "inactive": false
-          }
-        ],
-        "npcs": [],
-        "puzzles": [
-          {
-            "id": "1",
-            "description": "Qual é a arma que corta sem machucar?",
-            "solution": {
-              "requiredItems": [],
-              "actions": "palavra"
-            },
-            "result": {
-              "active": [],
-              "lose_item": []
-            }
-          }
-        ],
-        "enemies": []
-      },
-      {
-        "id": "4",
-        "name": "Igreja Velha",
-        "description": "Padre Loreno sabe como chamar o Cabeça de Cuia.",
-        "exits": [
-          {
-            "direction": "oeste",
-            "targetLocationId": "1",
-            "description": "Voltar para Alcântara",
-            "inactive": false
-          }
-        ],
-        "items": [],
-        "npcs": [
-          {
-            "id": "2",
-            "name": "Padre Loreno",
-            "description": "Um padre sábio que conhece os segredos do rio Itapecuru.",
-            "inactive": false,
-            "dialogues": [
-              {
-                "text": "Para chamar o Cabeça de Cuia, grite 'Maria' três vezes.",
-                "responses": []
-              }
-            ]
-          }
-        ],
-        "puzzles": [],
-        "enemies": []
-      }
-
+  "title": "A Serpente Adormecida",
+  "description": "Ana Jansen deseja despertar a Serpente de São Luís e dominar o mundo. Você precisa impedir isso antes que seja tarde!",
+  "author": "Marcos Mineiro",
+  "startLocationId": "1",
+  "max_itens": 5,
+  "max_turns_easy": 50,
+  "max_turns_normal": 30,
+  "max_turns_hard": 20,
+  "attack": 10,
+  "defense": 8,
+  "life": 22,
+  "locations": [
+    {
+      "id": "1",
+      "name": "Alcantara",
+      "description": "Você está no Centro de Alcântara, cercado por ruínas antigas e um clima de mistério. Dizem que aqui há pistas sobre os planos de Ana Jansen.",
+      "exits": [
+        {
+          "direction": " norte",
+          "targetLocationId": " 2",
+          "description": "Uma estrada de pedras leva a um antigo casarão abandonado.",
+          "inactive": true
+        }
+      ],
+      "items": 
+      [ 
+        {
+          "id": "1",
+          "name": "Chave",
+          "description": "Chave para abrir a porta do casarão.",
+          "can_take": false,
+          "inactive": false
       
-    ]
-  }
-  
+        }
+      ],
+      "npcs": 
+      [
+        {
+          "id": "1",
+          "name": "Sr. João",
+          "description": "Um velho senhor, guardião do casarão.",
+          "inactive": true,
+          "dialogues": [
+
+            {
+              "text": " Sr. João: Ola, sou o Sr. João, guardião do casarão, Você foi escolhido para nos libertar das garras maliquinas.",
+              "responses": [ 
+                {
+                  "text": "",
+                  "result": {
+                    "active": [],
+                    "lose_items": []
+                  }
+              }]
+            }
+          ]
+        }
+      ],
+      "puzzes": [
+        {
+          "id": "",
+          "description": "",
+          "solution": {
+            "required_items": [],
+            "actions": ""
+          },
+          "result":{
+            "active": [],
+            "lose_items": [],
+            "lose_life": 12
+          }
+        }
+      ],
+
+      "enemies": 
+      [
+        {
+          "attack": 12,
+          "defense": 10,
+          "result": {
+            "active": [],
+            "lose_items": [],
+            "lose_life": 12
+          }
+        }
+      ]
+      
+    }
+
+  ]
+}
