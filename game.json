@@ -1,109 +1,125 @@
 {
-  "title": "A Serpente Adormecida",
-  "description": "Ana Jansen deseja despertar a Serpente de São Luís e dominar o mundo. Você precisa impedir isso antes que seja tarde!",
+  "title": "A Lenda de Ana Jansen",
+  "description": "Uma aventura baseada no folclore maranhense. Você deve impedir Ana Jansen de despertar a Serpente de São Luís.",
   "author": "Marcos Mineiro",
-  "startLocationId": "1",
-  "max_items": 5,
-  "max_turns_easy": 50,
-  "max_turns_normal": 30,
-  "max_turns_hard": 20,
+  "startLocationId": "alcantara_centro",
+  "max_items": 3,
+  "max_turns_easy": 100,
+  "max_turns_normal": 50,
+  "max_turns_hard": 30,
   "attack": 10,
   "defense": 8,
   "life": 22,
   "locations": [
     {
       "id": "1",
-      "name": "Alcantara",
-      "description": "Você está no Centro de Alcântara, cercado por ruínas antigas e um clima de mistério. Dizem que aqui há pistas sobre os planos de Ana Jansen.",
+      "name": "Centro de Alcântara",
+      "description": "Você está no centro histórico de Alcântara. Pode seguir para norte, sul ou oeste.",
       "exits": [
-        {
-          "direction": "norte",
-          "targetLocationId": "2",
-          "description": "Uma estrada de pedras leva a um antigo casarão abandonado...",
-          "inactive": false
-        }
+        {"direction": "norte", "targetLocationId": "2"},
+        {"direction": "sul", "targetLocationId": "3"},
+        {"direction": "oeste", "targetLocationId": "4"}
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Estrada de Pedra",
+      "description": "Uma antiga estrada de pedra leva até um casarão abandonado.",
+      "exits": [
+        {"direction": "sul", "targetLocationId": "1"}
       ],
-      "items": [
-        {
-          "id": "chave",
-          "name": "chave",
-          "description": "Chave para abrir a porta do casarão.",
-          "can_take": true,
-          "inactive": false
-        }
-      ],
+      
       "npcs": [
         {
-          "id": "1",
+          "id": "sr_joao",
           "name": "Sr. João",
-          "description": "Um velho senhor, guardião do casarão.",
-          "inactive": true,
+          "description": "Um velho de bengala que protege o casarão.",
           "dialogues": [
             {
-              "text": "Sr. João: Olá, sou o Sr. João, guardião do casarão. Você foi escolhido para nos libertar das garras maliquinas de Ana Jansen, pegue a chave, entre no casarão e conheça o seu destino.",
+              "text": "Sou o mestre João, protetor e mestre do Casarão. Pegue a chave e entre para conhecer seu destino.",
               "responses": [
-                {
-                  "text": "Ok, vou pegar a chave.",
-                  "result": {
-                    "active": ["chave"],
-                    "lose_items": ["1"]
-                  }
-                }
+                {"result": {"active": ["chave_casarao"]}}
               ]
             }
           ]
         }
       ],
-      "puzzles": [],
-      "enemies": [
+      "items": [
         {
-          "attack": 12,
-          "defense": 10,
-          "result": {
-            "active": [],
-            "lose_items": [],
-            "lose_life": 12
-          }
+          "id": "chave_casarao",
+          "name": "Chave do Casarão",
+          "description": "Uma chave enferrujada que abre o casarão abandonado.",
+          "can_take": true
         }
       ]
     },
     {
-      "id": "2",
-      "name": "Casarão",
-      "description": "Dentro do casarão, você se depara com um quadro em branco, resolva o mistério para obter respostas.",
-      "exits": [
+      "id": "casarao",
+      "name": "Casarão Abandonado",
+      "description": "Um casarão antigo e misterioso. Há um quadro em branco na parede.",
+      "puzzles": [
         {
-          "direction": "sul",
-          "targetLocationId": "1",
-          "description": "Uma estrada de pedras leva a um antigo casarão abandonado...",
-          "inactive": false
+          "id": "charada_serpente",
+          "description": "No alto da serra ou no fundo da rua, meu corpo é de fogo e minha cabeça de serpente. Quem sou eu?",
+          "solution": {"actions": "serpente"},
+          "result": {"active": ["bussola_magica"]}
         }
       ],
       "items": [
         {
-          "id": "bussola",
-          "name": "Bússola",
-          "description": "Uma bússola mágica que revela o próximo local a ser visitado."
+          "id": "bussola_magica",
+          "name": "Bússola Mágica",
+          "description": "Um artefato que aponta o caminho certo.",
+          "can_take": true
         }
-      ],
-      "puzzles": [
+      ]
+    },
+    {
+      "id": "roda_capoeira",
+      "name": "Roda de Capoeira",
+      "description": "Uma roda de capoeira acontece aqui. O Mestre Bimba desafia você!",
+      "enemies": [
         {
-          "id": "charada_parede",
-          "description": "Aparece uma parede com uma charada, resolva para obter respostas.",
-          "solution": {
-            "required_items": [],
-            "actions": "resolver"
-          },
+          "id": "mestre_bimba",
+          "name": "Mestre Bimba",
+          "attack": 12,
+          "defense": 10,
           "result": {
-            "active": [],
-            "lose_items": [],
-            "lose_life": 12
-          },
-          "charade": {
-            "question": "No alto da serra ou no fundo da rua, meu corpo é de fogo e minha cabeça de serpente. Quem sou eu?",
-            "answer": "Serpente"
+            "active": ["espada_sao_jorge"],
+            "lose_life": 5
           }
         }
+      ],
+      "items": [
+        {
+          "id": "espada_sao_jorge",
+          "name": "Espada de São Jorge",
+          "description": "Uma lâmina poderosa contra forças malignas.",
+          "can_take": true
+        }
+      ]
+    },
+    {
+      "id": "porto",
+      "name": "Porto de Alcântara",
+      "description": "Um pequeno porto onde barcos partem para outros destinos.",
+      "npcs": [
+        {
+          "id": "capitao_barco",
+          "name": "Capitão do Barco",
+          "description": "Um marinheiro experiente que pode levá-lo para outro local.",
+          "dialogues": [
+            {
+              "text": "Para viajar, você deve me oferecer um item de valor.",
+              "responses": [
+                {"result": {"lose_item": ["chave_casarao", "bussola_magica"]}}
+              ]
+            }
+          ]
+        }
+      ],
+      "exits": [
+        {"direction": "navegar", "targetLocationId": "rio_itapecuru"}
       ]
     }
   ]
